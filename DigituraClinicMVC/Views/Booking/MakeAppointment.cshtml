@@ -1,0 +1,74 @@
+﻿@model IEnumerable<DigituraClinicMVC.Models.DoctorList>
+
+@{
+    ViewData["Title"] = "Book Appointment";
+}
+<style>
+    .buton {
+        padding: 4px;
+        background-color: deepskyblue;
+        font-weight: bold;
+        border-radius: 12px;
+    }
+
+    .butin {
+        padding: 4px;
+        background-color: orangered;
+        font-weight: bold;
+        border-radius: 12px;
+    }
+</style>
+<div class="img">
+    <h1 style="font-family:'Sitka Heading'">
+        Book Appointment
+    </h1>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.DoctorId)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.FirstName)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.LastName)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Specialization)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.VisitingHours)
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.DoctorId)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.FirstName)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.LastName)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Specialization)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.VisitingHours)
+                    </td>
+                    <td>
+                        <a asp-action="Book" asp-route-id="@item.DoctorId"><input class="buton" type="button" value="BOOK"></a>
+                        <a asp-action="DeleteDoctor" asp-route-id="@item.DoctorId"><input class="butin" type="button" value="DELETE"></a>
+
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

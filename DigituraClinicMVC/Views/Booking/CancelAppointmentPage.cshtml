@@ -1,0 +1,70 @@
+﻿@model IEnumerable<DigituraClinicMVC.Models.ScheduleAppointment>
+
+@{
+    ViewData["Title"] = "View/Cancel Appointment";
+}
+<style>
+    .buton {
+        padding: 4px;
+        background-color: orangered;
+        font-weight: bold;
+        border-radius: 12px;
+    }
+    
+</style>
+<div class="img">
+    <h1 style="font-family:'Sitka Heading'">Appointments</h1>
+<hr/>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.AppointmentNumber)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PatientId)
+            </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.DoctorId)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Specialization)
+                </th>
+            <th>
+                @Html.DisplayNameFor(model => model.AppointmentDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.AppointmentTime)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.AppointmentNumber)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PatientId)
+            </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.DoctorId)
+                    </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Specialization)
+            </td>
+            <td >
+                @Html.DisplayFor(modelItem => item.AppointmentDate)
+          </td>
+           <td>
+                @Html.DisplayFor(modelItem => item.AppointmentTime)
+          </td>
+            <td>
+                <a asp-action="Delete" asp-route-id="@item.AppointmentNumber"><input  class="buton" type="button" value="CANCEL"></a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
+</div>

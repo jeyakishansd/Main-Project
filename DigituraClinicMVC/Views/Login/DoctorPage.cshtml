@@ -1,0 +1,101 @@
+﻿@model DigituraClinicMVC.Models.DoctorList
+
+@{
+    ViewData["Title"] = "Add Doctor";
+}
+<style>
+    .img {
+        font-weight: bold;
+    }
+
+    .postion {
+        position: absolute;
+        top: 20%;
+        left: 50%;
+        font-size: 20px;
+    }
+
+    .head {
+        font-family: 'Sitka Heading';
+    }
+</style>
+<div class="img">
+<div class="row">
+    <div class="col-md-4">
+        <div class="postion">
+            <div class="head">
+            <h1>To Add Doctors</h1>
+            <h4>Enter the Details</h4>
+                    <h4 style="color:red;font-size:16px;">*All fields are mandatory</h4>
+                </div>
+        <form asp-action="DoctorPage">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="FirstName" class="control-label">First Name</label>
+                <input asp-for="FirstName" pattern="[a-zA-Z]+"  class="form-control" required/>
+                <span asp-validation-for="FirstName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="LastName" class="control-label">Last Name</label>
+                <input asp-for="LastName" pattern="[a-zA-Z]+"  class="form-control" required/>
+                <span asp-validation-for="LastName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Sex" class="control-label">Gender</label>
+                <br />
+                        <select name="Sex" id="sex" style="width:260px;height:35px;" required>
+                    <option value="Male" selected>Male</option>
+                    <option value="Female">Female</option>
+                    <option value="Others">Others</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label asp-for="Specialization" class="control-label"></label>
+               <br/>
+                        <select name="Specialization" style="width:260px;height:35px;" id="spl">
+                    <option value="General" selected>General</option>
+                    <option value="InternalMedicine">Internal Medicine</option>
+                    <option value="Pediatrics">Pediatrics</option>
+                    <option value="Orthopedics">Orthopedics</option>
+                    <option value="Opthalmology">Opthalmology</option>
+                </select>
+            </div>
+            <div class="form-group">
+                        <label asp-for="VisitingHours"  class="control-label">Visiting Hours</label>
+                        <br />
+                        <select name="VisitingHours" style="width:260px;height:35px;" id="visit" required>
+                            <option value="9AM-12PM" >9AM-12PM</option>
+                            <option value="10PM-1PM">10AM-1PM</option>
+                            <option value="11PM-2PM">11AM-2PM</option>
+                            <option value="12PM-3PM">12PM-3PM</option>
+                            <option value="1PM-4PM">1PM-4PM</option>
+                            <option value="2PM-5PM">2PM-5PM</option>
+                            <option value="3PM-6PM">3PM-6PM</option>
+                            <option value="4PM-7PM">4PM-7PM</option>
+                            <option value="5PM-8PM">5PM-8PM</option>
+                            <option value="6PM-9PM">6PM-9PM</option>
+                        </select>
+                    </div>
+            <br/>
+                    <div class="form-group">
+                        <button type="submit" value="ADD" style="width:160px;height:35px;" class="btn btn-success" onclick="Message()">
+                            <span><i class="fa fa-check"></i>ADD DOCTOR</span>
+                        </button>
+
+                    </div>
+        </form>
+            </div>
+        </div>
+</div>
+</div>
+<script>
+    debugger;
+    function Message() {
+        var FirstName = $("#FirstName").val();
+        var LastName = $("#LastName").val();
+        if (FirstName != null && FirstName != undefined && FirstName != "" && LastName != null && LastName != undefined && LastName != "") 
+        {
+            alert("Doctor Added Successfully");
+        }
+    }
+</script>

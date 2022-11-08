@@ -1,0 +1,65 @@
+﻿@model DigituraClinicMVC.Models.User
+
+@{
+    ViewData["Title"] = "Login";
+}
+<style>
+    .img {
+        background-image: url(../images/loginpage.jpg);
+        background-size:cover;
+        background-position:center;
+        height:90vh;
+        font-weight:bold;
+    }
+    .postion{
+        position:absolute;
+        top:36%;
+        left:74%;
+        font-family:Calibri;
+        font-size: 20px;
+    }
+    .logo{
+        position:absolute;
+        top:20%;
+        left:40%;
+        zoom:100%;
+    }
+    
+</style>
+<div class="img">
+
+<div class="row">
+    <div class="col-md-4">
+             <div class="logo">
+            <img src="~/images/Stone-Clinic-Logo ORIGINAL.png"  />
+            </div>
+            <div class="postion">
+                <h1 style="font-family:Sitka Heading">Login</h1>
+        <form asp-action="UserLogin">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="UserName" class="control-label">UserName</label>
+                <input asp-for="UserName" class="form-control" />
+                <span asp-validation-for="UserName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Password" class="control-label">Password</label>
+                <input asp-for="Password" type="password" class="form-control" required/>
+                <span asp-validation-for="Password" class="text-danger"></span>
+            </div>
+            <br/>
+            <div class="form-group">
+                <input type="submit" value="Login" class="btn btn-primary" />
+            </div>
+            @if(ViewBag.Message!=null){
+                <p style="color:red">@ViewBag.Message</p>
+            }
+        </form>
+    </div>
+</div>
+    </div>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

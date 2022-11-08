@@ -1,0 +1,90 @@
+﻿@model DigituraClinicMVC.Models.PatientList
+
+@{
+    ViewData["Title"] = "Add Patient";
+}
+<style>
+    .img {
+        background-color:bisque;
+        font-weight: bold;
+    }
+
+    .postion {
+        position: absolute;
+        top: 20%;
+        left: 20%;
+        font-family: Calibri;
+        font-size: 20px;
+    }
+    .head{
+        font-family:'Sitka Heading';
+    }
+</style>
+<div class="img">
+<div class="row">
+    <div class="col-md-4">
+            <div class="postion">
+                <div class="head">
+                <h1>To Add Patients</h1>
+                <h4>Enter the details</h4>
+                    <h4 style="color:red;font-size:16px;">*All fields are mandatory</h4>
+                
+                </div>
+        <form asp-action="PatientPage">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="FirstName" class="control-label">First Name</label>
+                <input asp-for="FirstName" pattern="[a-zA-Z]+"  class="form-control" required/>
+                <span asp-validation-for="FirstName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="LastName" class="control-label">Last Name</label>
+                <input asp-for="LastName" pattern="[a-zA-Z]+"  class="form-control" required/>
+                <span asp-validation-for="LastName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Sex" class="control-label">Gender</label>
+                <br/>
+                <select name="Sex" style="width:260px;height:35px;" id="sex" required>
+                    <option value="Male">Male</option>
+                    <option value="Female">Female</option>
+                    <option value="Others">Others</option>
+                </select>
+            </div>
+            
+            <div class="form-group">
+                <label asp-for="DateOfBirth" class="control-label">Date of birth</label>
+                        <input name="DateOfBirth" id="DateOfBirth" type="date" class="form-control" required />
+                <span asp-validation-for="DateOfBirth" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Age" class="control-label"></label>
+                <input asp-for="Age" type="number"  min="0" max="120"  class="form-control" required />
+                <span asp-validation-for="Age" class="text-danger"></span>
+           </div>
+            <br/>
+            <div class="form-group">
+                        <button type="submit" value="ADD" style="width:160px;height:35px;" class="btn btn-success" onclick="Message()">
+                <span ><i class="fa fa-check"></i>ADD PATIENT</span>
+                </button>
+
+            </div>
+        </form>
+            </div>
+        </div>
+</div>
+</div>
+<script type="text/javascript">
+    function Message() {
+        debugger;
+        var FirstName = $("#FirstName").val();
+        var LastName = $("#LastName").val();
+        var Age=$("#Age").Val();
+        if ( FirstName != null && FirstName != undefined && FirstName != "" && LastName != null && LastName != undefined && LastName != "" && Age != null && Age != undefined && Age != "" )
+        {
+            alert("Patient Added Successfully");
+        }
+    } 
+ 
+ </script>
+

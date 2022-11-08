@@ -1,0 +1,122 @@
+﻿@using Microsoft.AspNetCore.Http
+@inject IHttpContextAccessor HttpContextAccessor
+
+<style>
+    .navbar-nav{
+        font-family:sans-serif;
+        background-color:lightgray;
+    }
+
+    .button{
+        padding: 10px;
+        background-color: palegreen;
+        font-weight: bold ;
+        border-radius:12px;
+    }
+</style>
+<ul class="navbar-nav">
+    @{
+        ViewBag.Data = @HttpContextAccessor.HttpContext.Session.GetString("UserName");
+    }
+    @if (ViewBag.Data != null)
+    {
+        <li class="logo" style="zoom:45%;background-color:lightblue">
+            <a asp-controller="Login" asp-action="Home"><img src="~/images/Stone-Clinic-Logo ORIGINAL.png" /></a>
+        </li>
+        <li class="collapse navbar-collapse " style="background-color:lightblue;padding:10px;font-weight:bold">
+            <a id="patient" class="nav-link text-dark" asp-controller="Login" asp-action="PatientPage">Add Patient </a>
+        </li>
+        <li class="collapse navbar-collapse " style="background-color:lightblue;padding:10px;font-weight:bold" >
+            <a id="doctor" class="nav-link text-dark" asp-controller="Login" asp-action="DoctorPage">Add Doctor</a>
+        </li>
+        <li class="collapse navbar-collapse " style="background-color:lightblue;padding:10px;font-weight:bold">
+            <a id="Patients" class="nav-link text-dark" asp-controller="Booking" asp-action="Patients">Patients List</a>
+        </li>
+        <li class="collapse navbar-collapse " style="background-color:lightblue;padding:10px;font-weight:bold">
+            <a id="appointment" class="nav-link text-dark" asp-controller="Booking" asp-action="MakeAppointment">Book Appointment</a>
+        </li>
+        <li class="collapse navbar-collapse " style="background-color:lightblue;padding:10px;font-weight:bold">
+            <a id="appointmentcancel" class="nav-link text-dark" asp-controller="Booking" asp-action="CancelAppointmentPage">View/Cancel  Appointment</a>
+        </li>
+        <li>
+            <a id="empty" class="nav-link text-dark">                                       </a>
+        </li>
+        <li>
+            <a id="empty" class="nav-link text-dark">                                       </a>
+        </li>
+        <li>
+            <a id="empty" class="nav-link text-dark">                                       </a>
+        </li>
+        <li>
+            <a id="empty" class="nav-link text-dark">                                       </a>
+        </li>
+        <li>
+            <a id="empty" class="nav-link text-dark">                                       </a>
+        </li>
+        <li>
+            <a id="empty" class="nav-link text-dark">                                       </a>
+        </li>
+        <li>
+            <a id="empty" class="nav-link text-dark">                                       </a>
+        </li>
+        <li>
+            <a id="empty" class="nav-link text-dark">                                       </a>
+        </li>
+        <li>
+            <a id="empty" class="nav-link text-dark">                                       </a>
+        </li>
+        <li>
+            <a id="empty" class="nav-link text-dark">                                       </a>
+        </li>
+        <li>
+            <a id="empty" class="nav-link text-dark">                                       </a>
+        </li>
+        <li>
+            <a id="empty" class="nav-link text-dark">                                       </a>
+        </li>
+        <li>
+            <a id="empty" class="nav-link text-dark">                                       </a>
+        </li>
+        <li>
+            <a id="empty" class="nav-link text-dark">                                       </a>
+        </li>
+        <li>
+            <a id="empty" class="nav-link text-dark">                                       </a>
+        </li>
+        <li>
+            <a id="empty" class="nav-link text-dark">                                       </a>
+        </li>
+        <li>
+            <a id="empty" class="nav-link text-dark">                                       </a>
+        </li>
+        <li>
+            <a id="empty" class="nav-link text-dark">                                       </a>
+        </li>
+        <li>
+            <a id="empty" class="nav-link text-dark">                                       </a>
+        </li>
+        <li>
+            <a id="empty" class="nav-link text-dark">                                       </a>
+        </li>
+        <li>
+            <a id="empty" class="nav-link text-dark">                                       </a>
+        </li>
+       
+        <li class="collapse navbar-collapse justify-content-end" style="padding:10px;font-style:italic;font-weight:bold">
+            <a id="manage"  class="nav-link text-dark" title="Manage">Hello @ViewBag.Data !</a>
+        </li>
+        <li class="collapse navbar-collapse justify-content-end" >
+            @*<form id="logoutForm" class="form-inline" asp-controller="Login"  asp-action="Logout" asp-route-returnUrl="@Url.Action("Login", "Login", new { area = "" })">*@
+            <form>
+                <button class="button" id="logout" style="" type="submit" asp-controller="Login" asp-action="Logout">Log Out</button>
+            </form>
+            @*</form>*@
+        </li>
+       
+    }
+    else
+    {
+       @* <li class="nav-item">
+            <a class="nav-link text-dark" id="login" asp-controller="Login" asp-action="UserLogin">Login</a>
+        </li>*@
+    }
